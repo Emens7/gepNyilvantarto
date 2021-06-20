@@ -18,7 +18,6 @@ Az oldal felépítésének rövid leírása:
 Regisztráció az alkalmazásba
 
 A regisztrációs oldalon a felhasználó megadja az email címét és jelszavát, megerősítő jelszavát.
-A visszaigazoló email követően a regisztráció kész.
 
 ## 3. Admin oldal
 
@@ -57,9 +56,10 @@ Gép(jármű) üzemanyag vásárlásával kapcsolatos adatok
 
 Gép(jármű) fenntartási költségeinek nyilvántartása
 - A vásárolt alkatrész megnevezése, típusa
-- Vásárlás időpontja
+- Csere időpontja
 - Alkatrész mennyisége
 - Alkatrész költsége
+- Elvégzett munka leírása röviden
 
 ## Project egyéb adatai:
 Megvalósítás időtartama 10 hét
@@ -67,6 +67,7 @@ Megvalósítás időtartama 10 hét
 #### További fejlesztési lehetőségek:
 - Az admin oldalon a különböző gép(járművek) sorrendje tetszés szerint változtatható legyen.
 - Részletes keresés 
+- A visszaigazoló email a regisztrációról.
 - Figyelmeztetés küldés aktuális olaj cserére stb.
 - Hangalapú utasítás
 - ODB csatlakozóval mobil-nettel valós időbeni követés.
