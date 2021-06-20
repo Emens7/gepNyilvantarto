@@ -7,7 +7,7 @@
 Admisztrációs felület a felhasználó belépéséhez vagy regisztrációhoz.
 
 Az oldal felépítésének rövid leírása:
-> Az oldal elsősorban mobil felhasználásra készült,
+> Az oldal elsősorban mobil felhasználásra készül,
 > Angular FrontEnd,
 > NodeJs Backend
 
