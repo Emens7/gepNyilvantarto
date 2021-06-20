@@ -7,8 +7,8 @@
 Admisztrációs felület a felhasználó belépéséhez vagy regisztrációhoz.
 
 Az oldal felépítésének rövid leírása:
-> Az oldal elsősorban mobil felhasználásra készült
-> Angular FrontEnd
+> Az oldal elsősorban mobil felhasználásra készült,
+> Angular FrontEnd,
 > NodeJs Backend
 
 
@@ -31,10 +31,10 @@ Gép(jármű) kiválasztása rendszám vagy név alapján
 
 Itt adható hozzá új gép(jármű) az adatbázishoz
 
-- Gép(jármú) elnevezése, típusa
-- Gép rendszáma (opcionális)
-- Gép motorszáma (opcionális)
-- Gép alvázszáma (opcionális)
+- Gép(jármű) elnevezése, típusa
+- Gép(jármű) rendszáma (opcionális)
+- Gép(jármű) motorszáma (opcionális)
+- Gép(jármű) alvázszáma (opcionális)
 - Gyártási éve: (opcionális)
 - Vásárlás éve:  (opcionális)
 - Egyéb:  (opcionális)
@@ -50,6 +50,7 @@ Gép(jármű) üzemanyag vásárlásával kapcsolatos adatok
 - Vásárolt üzemanyag mennyisége
 - Vásárolt üzemanyag ára
 - Vásárlás időpontja
+- Vásárolt üzemanyag típusa (opcionális)
 - Egyéb megjegyzés (opcionális)
 
 ## 7. Fenntartási költségek hozzáadás oldal
