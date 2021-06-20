@@ -6,7 +6,7 @@
 
 Admisztrációs felület a felhasználó belépéséhez vagy regisztrációhoz.
 
-Az oldalhoz rövid leírása:
+Az oldal felépítésének rövid leírása:
 > Az oldal elsősorban mobil felhasználásra készült
 > Angular FrontEnd
 > NodeJs Backend
@@ -41,7 +41,7 @@ Itt adható hozzá új gép(jármű) az adatbázishoz
 
 ## 5. Kiválasztot gép(jármű) oldal
 
-Itt tekinthetőek meg a felvitt adatok egy része. Egyes gép(jármúvekről) időrendben a legújabb legfelül. Itt választható ki a különböző részletesebb információ.
+Itt tekinthetőek meg a felvitt adatok. Egyes gép(jármúvekről) időrendben a legújabb legfelül. Itt választható ki a különböző részletesebb információ.
 
 ## 6. Üzemanyag nyilvántartó hozzáadás oldal
 
@@ -65,6 +65,7 @@ Megvalósítás időtartama 10 hét
 
 #### További fejlesztési lehetőségek:
 - Az admin oldalon a különböző gép(járművek) sorrendje tetszés szerint változtatható legyen.
+- Részletes keresés 
 - Figyelmeztetés küldés aktuális olaj cserére stb.
 - Hangalapú utasítás
 - ODB csatlakozóval mobil-nettel valós időbeni követés.
