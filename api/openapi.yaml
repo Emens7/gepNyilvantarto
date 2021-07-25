@@ -1,0 +1,584 @@
+openapi: 3.0.1
+info:
+  version: '0.0.1'
+  title: Vehicle database API
+servers:
+  - url: 'http://localhost:3000'
+security:
+  - bearerAuth: []
+
+paths:
+  #Users #######################
+  /users/register:
+    post:
+      security: [] #Token is not required
+      summary: 'Sign up'
+      operationId: registerUser
+      tags:
+        - User
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/UserWithCredentials'
+      responses:
+        '201':
+          description: 'The user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users/login:
+    post:
+      security: [] #Token is not required
+      summary: 'Login'
+      operationId: loginUser
+      tags:
+        - User
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/UserWithCredentials'
+      responses:
+        '200':
+          description: 'A JWT token'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users:
+    get:
+      summary: 'Returns the list of the users'
+      operationId: listUsers
+      tags:
+        - User
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The list of the users'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}:
+    get:
+      summary: 'Returns a single user by id'
+      operationId: getUserById
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: Id of the user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Details about the user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  #Vehicles #######################
+
+  /vehicles:
+    get:
+      summary: 'Returns the list of the vehicles'
+      operationId: listVehicles
+      tags:
+        - Vehicle
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The list of the vehicles'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicle'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: 'Create a vehicle'
+      operationId: createVehicle
+      tags:
+        - Vehicle
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/VehicleData'
+      responses:
+        '201':
+          description: 'The created vehicle'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  /vehicles/{id}:
+    get:
+      summary: 'Returns a single vehicle by id'
+      operationId: getVehicleById
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          description: Id of the vehicle
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Details about the vehicle'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: 'Update a vehicle'
+      operationId: updateVehicle
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          description: Id of the vehicle
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/VehicleData'
+      responses:
+        '200':
+          description: 'The updated vehicle'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      summary: 'Delete a vehicle'
+      operationId: deleteVehicle
+      tags:
+        - Vehicle
+      parameters:
+        - name: id
+          in: path
+          description: Id of the vehicle
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'The vehicle has been removed'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  #Refuels #######################
+
+  /refuels:
+    get:
+      summary: 'Returns the list of refuels'
+      operationId: listRefuels
+      tags:
+        - Refuel
+      parameters:
+        - name: vehicleId
+          in: query
+          description: Vehicle Id
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The list of the refuels'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Refuel'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: 'Save refuel data'
+      operationId: createRefuel
+      tags:
+        - Refuel
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/RefuelData'
+      responses:
+        '201':
+          description: 'The saved refuel data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refuel'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  /refuels/{id}:
+    get:
+      summary: 'Returns a single refuel by id'
+      operationId: getRefuelById
+      tags:
+        - Refuel
+      parameters:
+        - name: id
+          in: path
+          description: Id of the refuel
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Details about the refuel'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refuel'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: 'Update a refuel data'
+      operationId: updateRefuel
+      tags:
+        - Refuel
+      parameters:
+        - name: id
+          in: path
+          description: Id of the refuel
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/RefuelData'
+      responses:
+        '200':
+          description: 'The updated refuel data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refuel'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      summary: 'Remove refuel data'
+      operationId: deleteRefuel
+      tags:
+        - Refuel
+      parameters:
+        - name: id
+          in: path
+          description: Id of the refuel
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'The refuel record has been removed'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+
+    
+components:
+  responses:
+    NotFound:
+      description: 'Not found'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: 'Unauthorized'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    BadRequest:
+      description: 'Bad request'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+
+    ServerError:
+      description: 'Internal server error'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Entity:
+      type: object
+      required:
+        - _id
+        - createdAt
+        - updatedAt
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        __v:
+          type: number
+
+    #Users
+    UserData:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    UserWithCredentials:
+      allOf:
+        - $ref: '#/components/schemas/UserData'
+        - type: object
+          required:
+            - password
+          properties:
+            password:
+              type: string
+              format: password
+    User:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - $ref: '#/components/schemas/UserData'
+
+    #Vehicles
+
+    VehicleData:
+      type: object
+      required:
+        - make
+        - model
+        - manufactureYear
+        - licensePlate
+      properties:
+        make:
+          type: string
+        model:
+          type: string
+        manufactureYear:
+          type: integer
+        licensePlate:
+          type: string
+        vin:
+          type: string
+          nullable: true
+
+    Vehicle:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - $ref: '#/components/schemas/VehicleData'
+        - type: object
+          required:
+            - userId
+            - vin
+          properties:
+            userId:
+              type: string
+
+    #Refuels
+
+    RefuelData:
+      type: object
+      required:
+        - odometerValue
+        - fuelAmount
+        - price
+        - refuelDate
+        - vehicleId
+      properties:
+        odometerValue:
+          type: number
+          format: float
+        fuelAmount:
+          type: number
+          format: float
+        price:
+          type: integer
+        refuelDate:
+          type: string
+          format: date-time
+        notes:
+          type: string
+          nullable: true
+        vehicleId:
+          type: string
+
+    Refuel:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - $ref: '#/components/schemas/RefuelData'
+        - type: object
+          required:
+              - userId
+              - notes
+          properties:
+            userId:
+              type: string
+
+    #Errors
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+    ValidationError:
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+              - value
+              - msg
+              - param
+              - location
+            properties:
+              value: {} #Any type
+              msg:
+                type: string
+              param:
+                type: string
+              location:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
