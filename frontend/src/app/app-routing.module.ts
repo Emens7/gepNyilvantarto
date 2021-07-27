@@ -30,6 +30,16 @@ const routes: Routes = [
     path: 'editvehicle/:id',
     loadChildren: () => import('./pages/editvehicle/editvehicle.module').then( m => m.EditvehiclePageModule),
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'refuel/:vehicleId',
+    loadChildren: () => import('./pages/refuel/refuel.module').then( m => m.RefuelPageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'refuel/:vehicleId/edit',
+    loadChildren: () => import('./pages/editrefuel/editrefuel.module').then( m => m.EditrefuelPageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 
