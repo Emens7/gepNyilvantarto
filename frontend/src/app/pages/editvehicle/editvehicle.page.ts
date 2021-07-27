@@ -2,7 +2,7 @@ import { VehicleModel } from './../../models/vehicle.model';
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../../apiservice/api/vehicle.service';
 import { first } from 'rxjs/operators';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class EditvehiclePage implements OnInit {
     private readonly vehicleService: VehicleService,
     public toastController: ToastController,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
