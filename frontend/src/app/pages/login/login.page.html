@@ -1,13 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Regisztráció</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-title>Bejelentkezés</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content  class="ion-padding">
 
   <ion-grid fixed>
     <form #Form="ngForm">
@@ -22,8 +19,13 @@
       </ion-item>
 
 
-      <ion-button (click)="register()" [disabled]="!Form.valid" expand="full" shape="round">Regisztráció</ion-button>
+      <ion-button (click)="login()" [disabled]="!Form.valid" expand="full" shape="round">Bejelentkezés</ion-button>
     </form>
+
+    <div class="ion-text-center ion-padding">
+      <a routerLink="/register">Regisztrálok</a>
+    </div>
+
   </ion-grid>
 
 </ion-content>

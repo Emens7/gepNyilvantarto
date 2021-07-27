@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { EMPTY, from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 import { catchError, finalize, switchMap } from 'rxjs/operators';
 import { AlertController, LoadingController } from '@ionic/angular';
 
@@ -32,9 +32,8 @@ export class RequestInterceptor implements HttpInterceptor {
         return next.handle(request);
       }),
       catchError((err) => {
-        console.log(err);
         this.handleErrorResponse(err.error);
-        return EMPTY;
+        return throwError(err);
       }),
       finalize(() => {
         this.loadingController.getTop().then(hasLoading => {

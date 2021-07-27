@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵclearResolutionOfComponentResourcesQueue } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { first } from 'rxjs/operators';
 import { UserService } from '../../../apiservice/api/user.service';
 
 @Component({
@@ -11,7 +14,11 @@ export class RegisterPage implements OnInit {
   email: string;
   password: string;
 
-  constructor(private readonly userService: UserService) { }
+  constructor(
+    private readonly userService: UserService,
+    public toastController: ToastController,
+    public router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -20,12 +27,18 @@ export class RegisterPage implements OnInit {
     this.userService.registerUser({
       email: this.email,
       password: this.password
-    }).subscribe(
+    }).pipe(first()).subscribe(
       (data) => {
         console.log(data);
-      },
-      (err) => {
-        console.log(err);
+
+        this.toastController.create({
+          message: 'A regisztráció sikeres! Jelentkezzen be.',
+          duration: 2000,
+          color: 'success'
+        }).then(t => t.present());
+
+        this.router.navigate(['/login']);
+
       }
     );
   }
