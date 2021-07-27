@@ -6,19 +6,21 @@
 
 <ion-content class="ion-padding">
 
-<form #Form="ngForm">
-  <ion-item>
-    <ion-label position="floating">Email:</ion-label>
-    <ion-input name="email" [(ngModel)]="email" type="email"></ion-input>
-  </ion-item>
+  <ion-grid fixed>
+    <form #Form="ngForm">
+      <ion-item>
+        <ion-label position="floating">Email:</ion-label>
+        <ion-input name="email" [(ngModel)]="email" type="email"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Jelszó:</ion-label>
-    <ion-input name="password" [(ngModel)]="password" type="password"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label position="floating">Jelszó:</ion-label>
+        <ion-input name="password" [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
 
 
-  <ion-button (click)="register()" [disabled]="!Form.valid" expand="full" shape="round">Regisztráció</ion-button>
-</form>
+      <ion-button (click)="register()" [disabled]="!Form.valid" expand="full" shape="round">Regisztráció</ion-button>
+    </form>
+  </ion-grid>
 
 </ion-content>
