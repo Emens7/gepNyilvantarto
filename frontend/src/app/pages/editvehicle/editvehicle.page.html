@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Jármű adatok szerkesztése</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid fixed>
+    <form #Form="ngForm">
+      <ion-item>
+        <ion-label position="floating">Jármű gyártója*:</ion-label>
+        <ion-input name="make" [(ngModel)]="vehicle.make" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Jármű típusa*:</ion-label>
+        <ion-input name="model" [(ngModel)]="vehicle.model" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Gyártási év*:</ion-label>
+        <ion-input name="manufactureYear" [(ngModel)]="vehicle.manufactureYear" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Rendszáma/azonosító*:</ion-label>
+        <ion-input name="licensePlate" [(ngModel)]="vehicle.licensePlate" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Alvázszám:</ion-label>
+        <ion-input name="vin" [(ngModel)]="vehicle.vin" type="text"></ion-input>
+      </ion-item>
+
+      <p>A csillaggal jelzettek kötelezőek</p>
+
+      <ion-button (click)="save()" [disabled]="!Form.valid" expand="full" shape="round">Mentés</ion-button>
+    </form>
+
+  </ion-grid>
+
+</ion-content>

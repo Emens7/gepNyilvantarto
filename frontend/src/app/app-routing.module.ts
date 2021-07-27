@@ -20,6 +20,16 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'editvehicle',
+    loadChildren: () => import('./pages/editvehicle/editvehicle.module').then( m => m.EditvehiclePageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'editvehicle/:id',
+    loadChildren: () => import('./pages/editvehicle/editvehicle.module').then( m => m.EditvehiclePageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 
