@@ -5,6 +5,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { RefuelService } from '../../../apiservice/api/refuel.service';
 import { Refuel } from 'src/apiservice';
+import { RefuelWithStats } from '../../models/refuel.model';
 
 @Component({
   selector: 'app-refuel',
@@ -15,7 +16,7 @@ export class RefuelPage implements OnInit, OnDestroy {
 
   vehicleId? : string;
   params: Subject<ParamMap>;
-  refuels: Refuel[] = [];
+  refuels: RefuelWithStats[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,10 +42,19 @@ export class RefuelPage implements OnInit, OnDestroy {
 
   }
 
+  processRefuelData(refuels: Refuel[]) {
+    return refuels.map((refuel: Refuel) => {
+      return {
+        ...refuel,
+        pricePerLiter: refuel.fuelAmount / refuel.price
+      }
+    });
+  }
+
   getRefuels() {
     this.refuelService.listRefuels(this.vehicleId)
       .pipe(first()).subscribe((refuels) => {
-        this.refuels = refuels;
+        this.refuels = this.processRefuelData(refuels);
       })
   }
 

@@ -48,8 +48,8 @@
         <ion-label>Emlékeztetők</ion-label>
       </ion-item>
 
-      <ion-button [routerLink]="['/editvehicle', vehicle._id]" size="small" color="primary">Szerkeszt</ion-button>
-      <ion-button (click)="deleteVehicle(vehicle._id)" size="small" color="danger">Törlés</ion-button>
+      <ion-button fill="outline" [routerLink]="['/editvehicle', vehicle._id]" size="small" color="primary">Szerkeszt</ion-button>
+      <ion-button fill="outline" (click)="deleteVehicle(vehicle._id)" size="small" color="danger">Törlés</ion-button>
 
 
     </ion-card>
