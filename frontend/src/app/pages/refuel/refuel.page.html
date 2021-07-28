@@ -18,40 +18,39 @@
   </ion-fab>
 
   <ion-grid fixed>
-<!--
-    <ion-card *ngFor="let vehicle of vehicles">
+
+    <ion-card *ngFor="let refuel of refuels">
 
       <ion-item>
-        <ion-icon name="tablet-landscape" slot="start"></ion-icon>
-        <ion-label>{{vehicle.licensePlate}}</ion-label>
+        <ion-icon name="refuelDate" slot="start"></ion-icon>
+        <ion-label>Dátum: {{refuel.refuelDate}}</ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-icon name="car-sport" slot="start"></ion-icon>
-        <ion-label>{{vehicle.make}} {{vehicle.model}} </ion-label>
+        <ion-icon name="odometerValue" slot="start"></ion-icon>
+        <ion-label>Kilométer állás:{{refuel.odometerValue}}</ion-label>
       </ion-item>
 
-      <ion-item href="#" class="ion-activated">
-        <ion-icon name="battery-half" slot="start"></ion-icon>
-        <ion-label>Tankolási adatok </ion-label>
-      </ion-item>
-      -->
-<!--
-      <ion-item href="#">
-        <ion-icon name="build" slot="start"></ion-icon>
-        <ion-label>Szervíz adatok</ion-label>
+      <ion-item>
+        <ion-icon name="fuelAmount" slot="start"></ion-icon>
+        <ion-label>Tankolt üzemanyag mennyisége:{{refuel.fuelAmount}}</ion-label>
       </ion-item>
 
-      <ion-item href="#">
-        <ion-icon name="notifications" slot="start"></ion-icon>
-        <ion-label>Emlékeztető</ion-label>
+      <ion-item>
+        <ion-icon name="fuelAmount" slot="start"></ion-icon>
+        <ion-label>Összesen kifizetett összeg:{{refuel.price}} Ft</ion-label>
       </ion-item>
 
-      <ion-button [routerLink]="['/editvehicle', vehicle._id]" size="small" color="primary">Szerkeszt</ion-button>
-      <ion-button (click)="deleteVehicle(vehicle._id)" size="small" color="danger">Törlés</ion-button>
+      <ion-item>
+        <ion-icon name="notes" slot="start"></ion-icon>
+        <ion-label>Egyébb megjegyzés:{{refuel.notes}}</ion-label>
+      </ion-item>
+
+      <ion-button [routerLink]="['/refuel', vehicleId, 'edit', refuel._id]" size="small" color="primary">Szerkeszt</ion-button>
+      <ion-button (click)="deleteRefuel(refuel._id)" size="small" color="danger">Törlés</ion-button>
 
 
     </ion-card>
-  -->
+
   </ion-grid>
 </ion-content>

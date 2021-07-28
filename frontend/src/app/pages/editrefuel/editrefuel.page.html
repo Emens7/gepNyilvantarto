@@ -11,6 +11,12 @@
 
   <ion-grid fixed>
     <form #Form="ngForm">
+
+      <ion-item>
+        <ion-label position="floating">Dátum*:</ion-label>
+        <ion-datetime  name="refuelDate" [(ngModel)]="refuel.refuelDate" displayFormat="YYYY. MM. DD. HH:mm" display-timezone="Europe/Budapest"></ion-datetime>
+      </ion-item>
+
       <ion-item>
         <ion-label position="floating">Kilométer óra állása*:</ion-label>
         <ion-input name="odometerValue" [(ngModel)]="refuel.odometerValue" type="number"></ion-input>
@@ -33,7 +39,7 @@
 
       <p>A csillaggal jelzettek kötelezőek</p>
 
-      <ion-button  [disabled]="!Form.valid" expand="full" shape="round">Mentés</ion-button>
+      <ion-button (click)="save()" [disabled]="!Form.valid" expand="full" shape="round">Mentés</ion-button>
     </form>
 
   </ion-grid>
