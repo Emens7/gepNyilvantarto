@@ -33,7 +33,7 @@ import { JwtModule } from '@auth0/angular-jwt';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

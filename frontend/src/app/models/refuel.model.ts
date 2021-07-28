@@ -5,7 +5,7 @@ export class RefuelModel implements RefuelData {
   odometerValue: number;
   fuelAmount: number;
   price: number;
-  refuelDate: string = Date();
+  refuelDate: string;
   notes?: string;
   vehicleId: string;
 
