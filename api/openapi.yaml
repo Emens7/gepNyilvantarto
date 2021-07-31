@@ -51,6 +51,8 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - token
                 properties:
                   token:
                     type: string
@@ -543,6 +545,75 @@ components:
           required:
               - userId
               - notes
+          properties:
+            userId:
+              type: string
+
+    #Services
+    
+    ServiceData:
+      type: object
+      required:
+        - summary
+        - serviceDate
+        - odometerValue
+        - expense
+        - vehicleId
+
+      properties:
+        summary:
+          type: string
+        serviceDate:
+          type: string
+          format: date-time
+        odometerValue:
+          type: number
+          format: float
+        expense: 
+          type: integer
+        description:
+          type: string
+          nullable: true
+        vehicleId:
+          type: string
+
+    Service:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - $ref: '#/components/schemas/ServiceData'
+        - type: object
+          required:
+              - userId
+              - description
+          properties:
+            userId:
+              type: string
+
+    #Notifications
+
+    NotificationData:
+      type: object
+      required:
+        - notificationDate
+        - subject
+        - vehicleId
+
+      properties:
+        notificationDate:
+          type: string
+          format: data-time
+        subject:
+          type: string
+        vehicleId:
+          type: string
+
+    Notification:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - $ref: '#/components/schemas/NotificationData'
+        - type: object
+          required: 
+            - userId
           properties:
             userId:
               type: string
