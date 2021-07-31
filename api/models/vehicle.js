@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Refuel = require('./refuel');
+const Service = require('./service');
+const Notification = require('./notification');
 
 const schema = mongoose.Schema({
     make: {
@@ -34,7 +36,9 @@ const schema = mongoose.Schema({
 //Delete resources belonging to the deleted vehicle
 schema.post('findOneAndDelete', function (doc) {
     if (doc) {
+        Notification.deleteMany({ vehicleId: doc._id }).exec();
         Refuel.deleteMany({ vehicleId: doc._id }).exec();
+        Service.deleteMany({ vehicleId: doc._id }).exec();
     }
 });
 
