@@ -2,7 +2,6 @@ import { first } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import { Observable, Subject } from 'rxjs';
 import { RefuelService } from '../../../apiservice/api/refuel.service';
 import { Refuel } from 'src/apiservice';
 import { RefuelWithStats } from '../../models/refuel.model';
@@ -12,10 +11,9 @@ import { RefuelWithStats } from '../../models/refuel.model';
   templateUrl: './refuel.page.html',
   styleUrls: ['./refuel.page.scss'],
 })
-export class RefuelPage implements OnInit, OnDestroy {
+export class RefuelPage implements OnInit {
 
   vehicleId? : string;
-  params: Subject<ParamMap>;
   refuels: RefuelWithStats[] = [];
 
   constructor(
@@ -33,13 +31,6 @@ export class RefuelPage implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.vehicleId = params.get('vehicleId');
     });
-  }
-
-  ngOnDestroy() {
-    if (this.params) {
-      this.params.unsubscribe();
-    }
-
   }
 
   processRefuelData(refuels: Refuel[]) {
