@@ -402,6 +402,295 @@ paths:
           $ref: '#/components/responses/ServerError'
 
 
+  #Services #######################
+
+  /services:
+    get:
+      summary: 'Returns the list of services'
+      operationId: listServices
+      tags:
+        - Service
+      parameters:
+        - name: vehicleId
+          in: query
+          description: Vehicle Id
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The list of the services'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: 'Save service data'
+      operationId: createService
+      tags:
+        - Service
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/ServiceData'
+      responses:
+        '201':
+          description: 'The saved service data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  /services/{id}:
+    get:
+      summary: 'Returns a single service by id'
+      operationId: getServiceById
+      tags:
+        - Service
+      parameters:
+        - name: id
+          in: path
+          description: Id of the service
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Details about the service'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: 'Update a service data'
+      operationId: updateService
+      tags:
+        - Service
+      parameters:
+        - name: id
+          in: path
+          description: Id of the service
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/ServiceData'
+      responses:
+        '200':
+          description: 'The updated service data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      summary: 'Remove service data'
+      operationId: deleteService
+      tags:
+        - Service
+      parameters:
+        - name: id
+          in: path
+          description: Id of the service
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'The service record has been removed'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  #Notifications #######################
+
+  /notifications:
+    get:
+      summary: 'Returns the list of notifications'
+      operationId: listNotifications
+      tags:
+        - Notification
+      parameters:
+        - name: vehicleId
+          in: query
+          description: Vehicle Id
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The list of the notifications'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: 'Save notification data'
+      operationId: createNotification
+      tags:
+        - Notification
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/NotificationData'
+      responses:
+        '201':
+          description: 'The saved notification data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  /notifications/{id}:
+    get:
+      summary: 'Returns a single notification by id'
+      operationId: getNotificationById
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: Id of the notification
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Details about the notification'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: 'Update a notification data'
+      operationId: updateNotification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: Id of the notification
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/NotificationData'
+      responses:
+        '200':
+          description: 'The updated notification data'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      summary: 'Remove notification data'
+      operationId: deleteNotification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: Id of the notification
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'The notification record has been removed'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+
     
 components:
   responses:
