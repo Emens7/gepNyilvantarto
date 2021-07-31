@@ -51,9 +51,10 @@
         <ion-label text-wrap>Egyéb: <strong>{{refuel.notes}}</strong></ion-label>
       </ion-item>
 
-      <ion-button fill="outline" [routerLink]="['/refuel', vehicleId, 'edit', refuel._id]" size="small" color="primary">Szerkeszt</ion-button>
-      <ion-button fill="outline" (click)="deleteRefuel(refuel._id)" size="small" color="danger">Törlés</ion-button>
-
+      <ion-item>
+        <ion-button  fill="outline" [routerLink]="['/refuel', vehicleId, 'edit', refuel._id]" size="small" color="primary">Szerkeszt</ion-button>
+        <ion-button fill="outline" (click)="deleteRefuel(refuel._id)" size="small" color="danger">Törlés</ion-button>
+      </ion-item>
 
     </ion-card>
 
