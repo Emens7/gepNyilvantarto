@@ -42,6 +42,13 @@
       </ion-item>
 
       <ion-item>
+        <ion-icon name="cash-sharp" slot="start"></ion-icon>
+        <ion-label *ngIf="refuel.mileage" text-wrap>Átlagfogyasztás: <strong>{{refuel.mileage | number}}</strong> Liter/100km</ion-label>
+        <ion-label *ngIf="!refuel.mileage" text-wrap>Átlagfogyasztás: <strong>N/A</strong></ion-label>
+        <ion-badge color="warning">Tele tankolásnál!</ion-badge>
+      </ion-item>
+
+      <ion-item>
         <ion-icon name="wallet" slot="start"></ion-icon>
         <ion-label text-wrap>Kifizetett összeg: <strong>{{refuel.price | number}}</strong> Ft</ion-label>
       </ion-item>

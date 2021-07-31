@@ -13,5 +13,6 @@ export class RefuelModel implements RefuelData {
 }
 
 export interface RefuelWithStats extends Refuel {
-  pricePerLiter: number
+  pricePerLiter: number,
+  mileage?: number
 }

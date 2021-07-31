@@ -34,10 +34,18 @@ export class RefuelPage implements OnInit {
   }
 
   processRefuelData(refuels: Refuel[]) {
-    return refuels.map((refuel: Refuel) => {
+    return refuels.map((refuel: Refuel, index: number) => {
+      let mileage = null;
+
+      if (refuels[index + 1]) {
+        const distance = refuel.odometerValue - refuels[index + 1].odometerValue;
+        mileage = (refuel.fuelAmount / distance) * 100;
+      }
+
       return {
         ...refuel,
-        pricePerLiter: refuel.fuelAmount / refuel.price
+        pricePerLiter: refuel.price / refuel.fuelAmount,
+        mileage
       }
     });
   }
