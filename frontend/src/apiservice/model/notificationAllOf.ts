@@ -11,7 +11,7 @@
  */
 
 
-export interface InlineResponse200 { 
-    token: string;
+export interface NotificationAllOf { 
+    userId: string;
 }
 

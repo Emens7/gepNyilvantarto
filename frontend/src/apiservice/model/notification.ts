@@ -9,9 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { Entity } from './entity';
+import { NotificationAllOf } from './notificationAllOf';
+import { NotificationData } from './notificationData';
 
 
-export interface InlineResponse200 { 
-    token: string;
+export interface Notification { 
+    _id: string;
+    createdAt: string;
+    updatedAt: string;
+    __v?: number;
+    notificationDate: string;
+    subject: string;
+    vehicleId: string;
+    userId: string;
 }
 

@@ -2,7 +2,9 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { NotificationService } from './api/notification.service';
 import { RefuelService } from './api/refuel.service';
+import { ServiceService } from './api/service.service';
 import { UserService } from './api/user.service';
 import { VehicleService } from './api/vehicle.service';
 

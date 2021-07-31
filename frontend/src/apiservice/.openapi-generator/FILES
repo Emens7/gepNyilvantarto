@@ -1,9 +1,10 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
+api/notification.service.ts
 api/refuel.service.ts
+api/service.service.ts
 api/user.service.ts
 api/vehicle.service.ts
 configuration.ts
@@ -14,9 +15,15 @@ model/entity.ts
 model/error.ts
 model/inlineResponse200.ts
 model/models.ts
+model/notification.ts
+model/notificationAllOf.ts
+model/notificationData.ts
 model/refuel.ts
 model/refuelAllOf.ts
 model/refuelData.ts
+model/service.ts
+model/serviceAllOf.ts
+model/serviceData.ts
 model/user.ts
 model/userData.ts
 model/userWithCredentials.ts

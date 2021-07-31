@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Szervíz adatok szerkesztése</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid fixed>
+    <form #Form="ngForm">
+
+      <ion-item>
+        <ion-label position="floating">Munka megnevezése:*:</ion-label>
+        <ion-input name="fuelAmount" [(ngModel)]="service.summary" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dátum*:</ion-label>
+        <ion-datetime  name="serviceDate"
+         [(ngModel)]="service.serviceDate"
+         displayFormat="YYYY. MM. DD. HH:mm"
+         display-timezone="Europe/Budapest"
+         doneText="Kész"
+         cancelText="Mégse"
+         ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Kilométer óra állása*:</ion-label>
+        <ion-input name="odometerValue" [(ngModel)]="service.odometerValue" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Szervízköltség:*:</ion-label>
+        <ion-input name="price" [(ngModel)]="service.expense" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Elvégzett munka leírása:</ion-label>
+        <ion-textarea name="notes" [(ngModel)]="service.description"></ion-textarea>
+      </ion-item>
+
+      <p>A csillaggal jelzettek kötelezőek</p>
+
+      <ion-button (click)="save()" [disabled]="!Form.valid" expand="full" shape="round">Mentés</ion-button>
+    </form>
+
+  </ion-grid>
+
+</ion-content>
+
+

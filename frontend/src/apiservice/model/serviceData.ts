@@ -11,7 +11,12 @@
  */
 
 
-export interface InlineResponse200 { 
-    token: string;
+export interface ServiceData { 
+    summary: string;
+    serviceDate: string;
+    odometerValue: number;
+    expense: number;
+    description?: string | null;
+    vehicleId: string;
 }
 

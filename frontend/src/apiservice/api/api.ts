@@ -1,7 +1,11 @@
+export * from './notification.service';
+import { NotificationService } from './notification.service';
 export * from './refuel.service';
 import { RefuelService } from './refuel.service';
+export * from './service.service';
+import { ServiceService } from './service.service';
 export * from './user.service';
 import { UserService } from './user.service';
 export * from './vehicle.service';
 import { VehicleService } from './vehicle.service';
-export const APIS = [RefuelService, UserService, VehicleService];
+export const APIS = [NotificationService, RefuelService, ServiceService, UserService, VehicleService];

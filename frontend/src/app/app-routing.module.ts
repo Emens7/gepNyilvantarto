@@ -46,6 +46,21 @@ const routes: Routes = [
     path: 'refuel/:vehicleId/edit/:refuelId',
     loadChildren: () => import('./pages/editrefuel/editrefuel.module').then( m => m.EditrefuelPageModule),
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'service/:vehicleId',
+    loadChildren: () => import('./pages/service/service.module').then( m => m.ServicePageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'service/:vehicleId/edit',
+    loadChildren: () => import('./pages/editservice/editservice.module').then( m => m.EditservicePageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'service/:vehicleId/edit/:serviceId',
+    loadChildren: () => import('./pages/editservice/editservice.module').then( m => m.EditservicePageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 

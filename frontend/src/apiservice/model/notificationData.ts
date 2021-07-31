@@ -11,7 +11,9 @@
  */
 
 
-export interface InlineResponse200 { 
-    token: string;
+export interface NotificationData { 
+    notificationDate: string;
+    subject: string;
+    vehicleId: string;
 }
 
