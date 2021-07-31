@@ -3,11 +3,11 @@ const { validVehicleId } = require('../../utils/validation');
 
 module.exports = [
     body('notificationDate')
-        .isISO8601().widthMessage('Az értesítés időpontját be kell jelölni'),
+        .isISO8601().withMessage('Az értesítés időpontját be kell jelölni'),
 
     body('subject')
         .notEmpty().withMessage('Az értesítés megadása kötelező!')
-        .isLength({ max: 1500 }).widthMessage('Az értesítés szövege nem lehet hosszabb 1500 karakternél'),
+        .isLength({ max: 1500 }).withMessage('Az értesítés szövege nem lehet hosszabb 1500 karakternél'),
 
     body('vehicleId')
         .isMongoId()
