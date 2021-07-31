@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Emlékeztető szerkesztése</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid fixed>
+    <form #Form="ngForm">
+
+      <ion-item>
+        <ion-label position="floating">Dátum*:</ion-label>
+        <ion-datetime  name="notificationDate"
+         [(ngModel)]="notification.notificationDate"
+         max="2026-01-01"
+         displayFormat="YYYY. MM. DD. HH:mm"
+         display-timezone="Europe/Budapest"
+         doneText="Kész"
+         cancelText="Mégse"
+         ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Figyelmezetetés leírása*:</ion-label>
+        <ion-textarea name="subject" [(ngModel)]="notification.subject"></ion-textarea>
+      </ion-item>
+
+      <p>A csillaggal jelzettek kötelezőek</p>
+
+      <ion-button (click)="save()" [disabled]="!Form.valid" expand="full" shape="round">Mentés</ion-button>
+    </form>
+
+  </ion-grid>
+
+</ion-content>
+

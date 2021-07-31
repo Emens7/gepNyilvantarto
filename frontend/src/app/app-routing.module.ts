@@ -61,6 +61,21 @@ const routes: Routes = [
     path: 'service/:vehicleId/edit/:serviceId',
     loadChildren: () => import('./pages/editservice/editservice.module').then( m => m.EditservicePageModule),
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'notification/:vehicleId',
+    loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'notification/:vehicleId/edit',
+    loadChildren: () => import('./pages/editnotification/editnotification.module').then( m => m.EditnotificationPageModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'notification/:vehicleId/edit/:notificationId',
+    loadChildren: () => import('./pages/editnotification/editnotification.module').then( m => m.EditnotificationPageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 
