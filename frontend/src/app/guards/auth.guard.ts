@@ -8,7 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(public jwtHelper: JwtHelperService, public router: Router) {}
+  constructor(
+    public jwtHelper: JwtHelperService,
+    public router: Router)
+     {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

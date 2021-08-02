@@ -5,6 +5,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { RefuelService } from '../../../apiservice/api/refuel.service';
 import { Refuel } from 'src/apiservice';
 import { RefuelWithStats } from '../../models/refuel.model';
+import { VehicleService } from '../../../apiservice/api/vehicle.service';
 
 @Component({
   selector: 'app-refuel',
@@ -15,10 +16,12 @@ export class RefuelPage implements OnInit {
 
   vehicleId? : string;
   refuels: RefuelWithStats[] = [];
+  licensePlate: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private readonly refuelService: RefuelService,
+    private readonly vehicleService: VehicleService,
     public alertController: AlertController,
     public toastController: ToastController
     ) { }
@@ -50,10 +53,19 @@ export class RefuelPage implements OnInit {
     });
   }
 
+
+  getLicensePlate() {
+    this.vehicleService.getVehicleById(this.vehicleId)
+     .pipe(first()).subscribe((vehicle) => {
+       this.licensePlate = vehicle.licensePlate;
+     });
+  }
+
   getRefuels() {
     this.refuelService.listRefuels(this.vehicleId)
       .pipe(first()).subscribe((refuels) => {
         this.refuels = this.processRefuelData(refuels);
+        this.getLicensePlate();
       })
   }
 

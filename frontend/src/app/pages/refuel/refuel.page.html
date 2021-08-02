@@ -19,6 +19,10 @@
 
   <ion-grid fixed>
 
+    <ion-item>
+      {{licensePlate}}
+    </ion-item>
+
     <ion-card *ngFor="let refuel of refuels">
 
       <ion-item>
@@ -42,7 +46,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon name="cash-sharp" slot="start"></ion-icon>
+        <ion-icon name="pulse" slot="start"></ion-icon>
         <ion-label *ngIf="refuel.mileage" text-wrap>Átlagfogyasztás: <strong>{{refuel.mileage | number}}</strong> Liter/100km</ion-label>
         <ion-label *ngIf="!refuel.mileage" text-wrap>Átlagfogyasztás: <strong>N/A</strong></ion-label>
         <ion-badge color="warning">Tele tankolásnál!</ion-badge>
