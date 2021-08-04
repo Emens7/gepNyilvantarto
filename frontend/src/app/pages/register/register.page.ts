@@ -13,6 +13,7 @@ export class RegisterPage implements OnInit {
 
   email: string;
   password: string;
+  confirmPassword: string;
 
   constructor(
     private readonly userService: UserService,
