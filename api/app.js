@@ -28,6 +28,7 @@ mongoose.connect(process.env.DB_URI, {
     logger.info('Connected to the database')
 }).catch((err) => {
     logger.error(err);
+    process.exit(1);
 });
 
 //Access-Control-Allow-Origin: *
