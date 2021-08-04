@@ -1,0 +1,27 @@
+version: '3'
+services:
+  apiserver:
+    container_name: apiserver
+    restart: always
+    build: ./api
+    links:
+      - mongodb
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_URI=mongodb://mongodb:27017/vehicledb
+      - JWT_SECRET=blablabla
+    ports:
+      - '3000:3000'
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - './db:/data/db'
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - '8080:80'
