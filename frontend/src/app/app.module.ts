@@ -9,12 +9,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ApiModule } from 'src/apiservice';
+import { ApiModule, BASE_PATH } from 'src/apiservice';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import localeHuHu from '@angular/common/locales/hu';
 import { registerLocaleData } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(localeHuHu);
 
@@ -40,6 +41,8 @@ registerLocaleData(localeHuHu);
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: "hu-HU" },
+    /* API server URL */
+    { provide: BASE_PATH, useValue: environment.API_BASE_PATH }
   ],
   bootstrap: [AppComponent],
 })
