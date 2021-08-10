@@ -16,6 +16,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import localeHuHu from '@angular/common/locales/hu';
 import { registerLocaleData } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeHuHu);
 
@@ -33,6 +34,12 @@ registerLocaleData(localeHuHu);
       config: {
         tokenGetter: () => localStorage.getItem("token")
       }
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     })
 
   ],
