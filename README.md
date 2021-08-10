@@ -24,51 +24,49 @@ A regisztrációs oldalon a felhasználó megadja az email címét és jelszavá
 Gép(jármű) kiválasztása rendszám vagy név alapján
 
 - Gép(jármű) kiválasztása rendszám vagy típusa alapján így a kiválasztott gép oldalra jutás
-- Új gép(jármű) gombra rákkatintva új Gép(jármű) felvitel oldalra lépés
+- Új gép(jármű) + gombra rákkatintva új Gép(jármű) felvitel oldalra lépés
 
 ## 4. Új gép(jármű) hozzáadás oldal
 
 Itt adható hozzá új gép(jármű) az adatbázishoz
 
 - Gép(jármű) elnevezése, típusa
-- Gép(jármű) rendszáma (opcionális)
-- Gép(jármű) motorszáma (opcionális)
+- Gép(jármű) rendszáma 
 - Gép(jármű) alvázszáma (opcionális)
-- Gyártási éve: (opcionális)
-- Vásárlás éve:  (opcionális)
 - Egyéb:  (opcionális)
 
 ## 5. Kiválasztot gép(jármű) oldal
 
 Itt tekinthetőek meg a felvitt adatok. Egyes gép(jármúvekről) időrendben a legújabb legfelül. Itt választható ki a különböző részletesebb információ.
 
-## 6. Üzemanyag nyilvántartó hozzáadás oldal
+## 6. Fogyasztási adatok oldal
 
 Gép(jármű) üzemanyag vásárlásával kapcsolatos adatok
 
-- Vásárolt üzemanyag mennyisége
-- Vásárolt üzemanyag ára
-- Vásárlás időpontja
-- Vásárolt üzemanyag típusa (opcionális)
+- Dátum
+- Kilométer óra állás
+- Tankolt üzemanyag
+- Kifizetett összeg
 - Egyéb megjegyzés (opcionális)
 
-## 7. Fenntartási költségek hozzáadás oldal
+## 7. Szervíz adatok szerkesztése oldal
 
 Gép(jármű) fenntartási költségeinek nyilvántartása
-- A vásárolt alkatrész megnevezése, típusa
-- Csere időpontja
-- Alkatrész mennyisége
-- Alkatrész költsége
-- Elvégzett munka leírása röviden
+- Munka megnevezése
+- Dátum
+- Kilométer óra állása
+- Szervízköltség
+- Elvégzett munka leírása (opcionális)
 
 ## Project egyéb adatai:
 Megvalósítás időtartama 10 hét
 
 #### További fejlesztési lehetőségek:
-- Az admin oldalon a különböző gép(járművek) sorrendje tetszés szerint változtatható legyen.
+- Az admin oldalon a különböző gép(járművek) sorrendje tetszés szerint változtatható legyen (darag and drop).
+- Fényképező funkció + fénykép mappa.
 - Részletes keresés 
 - A visszaigazoló email a regisztrációról.
-- Figyelmeztetés küldés aktuális olaj cserére stb.
+- Figyelmeztetés email-ben küldés aktuális olaj cserére stb.
 - Hangalapú utasítás
 - ODB csatlakozóval mobil-nettel valós időbeni követés.
 
