@@ -13,13 +13,28 @@
     <form #Form="ngForm">
       <ion-item>
         <ion-label position="floating">Email:</ion-label>
-        <ion-input name="email" [(ngModel)]="email" type="email" required></ion-input>
+        <ion-input name="email" [(ngModel)]="email"  #emailInput="ngModel" type="email" email required></ion-input>
       </ion-item>
+
+      <!-- Validation -->
+      <ion-item *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+        <ion-text *ngIf="emailInput.invalid" color="danger">Az e-mail cím érvénytelen!</ion-text>
+      </ion-item>
+      <!-- /Validation -->
 
       <ion-item>
         <ion-label position="floating">Jelszó:</ion-label>
-        <ion-input name="password" [(ngModel)]="password" type="password" required></ion-input>
+        <ion-input name="password" [(ngModel)]="password" #passwordInput="ngModel" type="password" required minlength="6" maxlength="12"></ion-input>
       </ion-item>
+
+      <!-- Validation -->
+      <ion-item *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+        <ion-text color="danger">
+          <p *ngIf="passwordInput.errors?.required">Az jelszó kötelező!</p>
+          <p *ngIf="passwordInput.errors?.minlength">Minimum 6 karakter szükséges!</p>
+        </ion-text>
+      </ion-item>
+      <!-- /Validation -->
 
       <ion-item>
         <ion-label position="floating">Jelszó megerősítése:</ion-label>

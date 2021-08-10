@@ -25,22 +25,22 @@
 
       <ion-item>
         <ion-label position="floating">Kilométer óra állása*:</ion-label>
-        <ion-input name="odometerValue" [(ngModel)]="refuel.odometerValue" type="number"></ion-input>
+        <ion-input name="odometerValue" [(ngModel)]="refuel.odometerValue" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Tankolt üzemanyag mennyisége*:</ion-label>
-        <ion-input name="fuelAmount" [(ngModel)]="refuel.fuelAmount" type="number"></ion-input>
+        <ion-input name="fuelAmount" [(ngModel)]="refuel.fuelAmount" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Összesen fizetett összeg*:</ion-label>
-        <ion-input name="price" [(ngModel)]="refuel.price" type="number"></ion-input>
+        <ion-input name="price" [(ngModel)]="refuel.price" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Egyéb megjegyzés:</ion-label>
-        <ion-textarea name="notes" [(ngModel)]="refuel.notes"></ion-textarea>
+        <ion-textarea name="notes" [(ngModel)]="refuel.notes" maxlength="350"></ion-textarea>
       </ion-item>
 
       <p>A csillaggal jelzettek kötelezőek</p>

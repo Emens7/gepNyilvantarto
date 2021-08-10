@@ -26,7 +26,7 @@
 
       <ion-item>
         <ion-label position="floating">Figyelmezetetés leírása*:</ion-label>
-        <ion-textarea name="subject" [(ngModel)]="notification.subject"></ion-textarea>
+        <ion-textarea name="subject" [(ngModel)]="notification.subject" maxlength="1500" required></ion-textarea>
       </ion-item>
 
       <p>A csillaggal jelzettek kötelezőek</p>

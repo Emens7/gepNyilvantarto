@@ -14,7 +14,7 @@
 
       <ion-item>
         <ion-label position="floating">Munka megnevezése:*:</ion-label>
-        <ion-input name="fuelAmount" [(ngModel)]="service.summary" type="text"></ion-input>
+        <ion-input name="fuelAmount" [(ngModel)]="service.summary" type="text" maxlength="150" required></ion-input>
       </ion-item>
 
       <ion-item>
@@ -30,17 +30,17 @@
 
       <ion-item>
         <ion-label position="floating">Kilométer óra állása*:</ion-label>
-        <ion-input name="odometerValue" [(ngModel)]="service.odometerValue" type="number"></ion-input>
+        <ion-input name="odometerValue" [(ngModel)]="service.odometerValue" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Szervízköltség:*:</ion-label>
-        <ion-input name="expense" [(ngModel)]="service.expense" type="number"></ion-input>
+        <ion-input name="expense" [(ngModel)]="service.expense" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Elvégzett munka leírása:</ion-label>
-        <ion-textarea name="description" [(ngModel)]="service.description"></ion-textarea>
+        <ion-textarea name="description" [(ngModel)]="service.description" maxlength="2500"></ion-textarea>
       </ion-item>
 
       <p>A csillaggal jelzettek kötelezőek</p>

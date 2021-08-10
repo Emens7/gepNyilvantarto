@@ -13,27 +13,27 @@
     <form #Form="ngForm">
       <ion-item>
         <ion-label position="floating">Jármű gyártója*:</ion-label>
-        <ion-input name="make" [(ngModel)]="vehicle.make" type="text"></ion-input>
+        <ion-input name="make" [(ngModel)]="vehicle.make" type="text" maxlength="50" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Jármű típusa*:</ion-label>
-        <ion-input name="model" [(ngModel)]="vehicle.model" type="text"></ion-input>
+        <ion-input name="model" [(ngModel)]="vehicle.model" type="text" maxlength="50" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Gyártási év*:</ion-label>
-        <ion-input name="manufactureYear" [(ngModel)]="vehicle.manufactureYear" type="number"></ion-input>
+        <ion-input name="manufactureYear" [(ngModel)]="vehicle.manufactureYear" type="number" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Rendszáma/azonosító*:</ion-label>
-        <ion-input name="licensePlate" [(ngModel)]="vehicle.licensePlate" type="text"></ion-input>
+        <ion-input name="licensePlate" [(ngModel)]="vehicle.licensePlate" type="text"  maxlength="50" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Alvázszám:</ion-label>
-        <ion-input name="vin" [(ngModel)]="vehicle.vin" type="text"></ion-input>
+        <ion-input name="vin" [(ngModel)]="vehicle.vin" type="text"  maxlength="25"></ion-input>
       </ion-item>
 
       <p>A csillaggal jelzettek kötelezőek</p>
