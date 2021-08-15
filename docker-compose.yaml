@@ -2,7 +2,7 @@ version: '3'
 services:
   apiserver:
     container_name: apiserver
-    restart: on-failure
+    restart: unless-stopped
     build: ./api
     links:
       - mongodb
