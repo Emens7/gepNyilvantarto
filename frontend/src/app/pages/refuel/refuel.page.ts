@@ -39,15 +39,18 @@ export class RefuelPage implements OnInit {
   processRefuelData(refuels: Refuel[]) {
     return refuels.map((refuel: Refuel, index: number) => {
       let mileage = null;
+      let pricePerDistance = null;
 
       if (refuels[index + 1]) {
         const distance = refuel.odometerValue - refuels[index + 1].odometerValue;
         mileage = (refuel.fuelAmount / distance) * 100;
+        pricePerDistance = refuel.price / distance;
       }
 
       return {
         ...refuel,
         pricePerLiter: refuel.price / refuel.fuelAmount,
+        pricePerDistance,
         mileage
       }
     });

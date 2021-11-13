@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AlertController, IonContent, IonInfiniteScroll, ToastController } from '@ionic/angular';
 import { first } from 'rxjs/operators';
 import { Vehicle } from 'src/apiservice';
 import { VehicleService } from '../../../apiservice/api/vehicle.service';
@@ -11,6 +11,10 @@ import { VehicleService } from '../../../apiservice/api/vehicle.service';
 })
 export class HomePage {
 
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonContent, { static: false }) private content: IonContent;
+​
+  currentPage: number = 1;
   vehicles: Vehicle[] = [];
 
   constructor(
@@ -24,10 +28,32 @@ export class HomePage {
   }
 
   getVehicles() {
+
+    this.currentPage = 1;
+    this.infiniteScroll.disabled = false;
+    this.content.scrollToTop();
+
     this.vehicleService.listVehicles()
       .pipe(first()).subscribe((vehicles) => {
         this.vehicles = vehicles;
       })
+  }
+
+  loadData(event) {
+    ​
+        this.currentPage++;
+        this.vehicleService.listVehicles(this.currentPage)
+          .pipe(first()).subscribe((vehicles) => {
+    ​
+            this.vehicles.push(...vehicles);
+    ​
+            event.target.complete();
+    ​
+            if (vehicles.length === 0) {
+              event.target.disabled = true;
+            }
+        });
+
   }
 
   requestDelete(id: string) {
